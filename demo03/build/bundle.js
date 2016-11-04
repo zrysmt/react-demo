@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "858d420861b801aaf306"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6608209fde6da359a09c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -8433,6 +8433,10 @@
 
 	var _story2 = _interopRequireDefault(_story);
 
+	var _travel = __webpack_require__(317);
+
+	var _travel2 = _interopRequireDefault(_travel);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8472,7 +8476,8 @@
 			_reactRouter.Route,
 			{ path: '/', component: App },
 			_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/Story', component: _story2.default })
+			_react2.default.createElement(_reactRouter.Route, { path: '/Story', component: _story2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/Travel', component: _travel2.default })
 		)
 	), document.body);
 	;
@@ -35070,13 +35075,13 @@
 			key: 'render',
 			value: function render() {
 				var linkTo = this.props.name == "Home" ? "/" : "/" + this.props.name;
-				console.log(linkTo);
+				var activeClass = this.props.name == "Home" ? "" : "active";
 				return _react2.default.createElement(
 					'li',
 					null,
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: linkTo },
+						{ to: linkTo, activeClassName: activeClass },
 						this.props.name
 					)
 				);
@@ -35137,7 +35142,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n/* \r\n * scss全局变量\r\n */\n#menu {\n  margin: 0 auto;\n  margin-top: 10px; }\n  #menu ul {\n    font-size: 0.9rem; }\n    #menu ul li {\n      display: inline-block;\n      list-style-type: none;\n      font-size: inherit;\n      margin-left: 1em;\n      line-height: 1.5; }\n      #menu ul li:hover {\n        cursor: pointer;\n        color: #46F1AE; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n/* \r\n * scss全局变量\r\n */\n#menu {\n  margin: 0 auto;\n  margin-top: 10px; }\n  #menu ul {\n    font-size: 0.9rem; }\n    #menu ul li {\n      display: inline-block;\n      list-style-type: none;\n      font-size: inherit;\n      margin-left: 1em;\n      line-height: 1.5; }\n      #menu ul li:first {\n        color: #46F1AE; }\n      #menu ul li:hover {\n        cursor: pointer;\n        color: #46F1AE; }\n      #menu ul li .active {\n        color: #46F1AE; }\n", ""]);
 
 	// exports
 
@@ -35304,12 +35309,6 @@
 		return Story;
 	}(_react2.default.Component);
 
-	/*ReactDOM.render(
-		<Story/>,
-		document.getElementById("story")
-	);*/
-
-
 	var _default = Story;
 	exports.default = _default;
 	;
@@ -35354,6 +35353,115 @@
 
 /***/ },
 /* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(305)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 317 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(78);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(110);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	__webpack_require__(318);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Travel = function (_React$Component) {
+		_inherits(Travel, _React$Component);
+
+		function Travel() {
+			_classCallCheck(this, Travel);
+
+			return _possibleConstructorReturn(this, (Travel.__proto__ || Object.getPrototypeOf(Travel)).apply(this, arguments));
+		}
+
+		_createClass(Travel, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'h5',
+					null,
+					'\u8FD9\u662Ftravel'
+				);
+			}
+		}]);
+
+		return Travel;
+	}(_react2.default.Component);
+
+	var _default = Travel;
+	exports.default = _default;
+	;
+
+	var _temp = function () {
+		if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+			return;
+		}
+
+		__REACT_HOT_LOADER__.register(Travel, 'Travel', 'E:/react-demo/demo03/src/components/travel/travel.jsx');
+
+		__REACT_HOT_LOADER__.register(_default, 'default', 'E:/react-demo/demo03/src/components/travel/travel.jsx');
+	}();
+
+	;
+
+/***/ },
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(319);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(306)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(319, function() {
+				var newContent = __webpack_require__(319);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(305)();

@@ -11,8 +11,4 @@ class Story extends React.Component{
 	}
 }
 
-/*ReactDOM.render(
-	<Story/>,
-	document.getElementById("story")
-);*/
 export default Story;
