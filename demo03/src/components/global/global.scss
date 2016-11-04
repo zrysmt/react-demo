@@ -1,0 +1,11 @@
+@import 'reset';
+@import 'varible';
+@import 'mediaQuery';
+html {
+    // font-size: 20px;
+    font-family: $gFontFamily;
+}
+
+#main{
+	margin-top:10px;
+}

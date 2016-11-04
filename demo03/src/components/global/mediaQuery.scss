@@ -1,0 +1,46 @@
+$viewport-increment: 0.1px; // customize to suite
+// Desktop
+$desktop: 1024px; // customize to suite
+$pre-desktop: $desktop - $viewport-increment;
+// Tablet
+$tablet: 768px; // customize to suite
+$pre-tablet: $tablet - $viewport-increment;
+// Palm
+$palm: 640px; // customize to suite
+$post-palm: $palm + $viewport-increment;
+// Constraints
+$min: min-width;
+$max: max-width;
+
+@mixin mediaQuery($constraint, $viewport1, $viewport2: null) {
+    @if $constraint==$min {
+        @media screen and ($min: $viewport1) {
+            @content;
+        }
+    }
+    @else if $constraint==$max {
+        @media screen and ($max: $viewport1) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and ($min: $viewport1) and ($max: $viewport2) {
+            @content;
+        }
+    }
+}
+
+html {
+    @include mediaQuery($max, $palm) {
+        font-size: 75% !important;
+    }
+    @include mediaQuery(null, $post-palm, $pre-tablet) {
+        font-size: 87.5% !important;
+    }
+    @include mediaQuery($min, $tablet) {
+        font-size: 90% !important;
+    }
+    @include mediaQuery($min, $desktop) {
+        font-size: 125% !important;
+    }
+}

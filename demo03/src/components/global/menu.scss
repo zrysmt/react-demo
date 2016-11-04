@@ -1,0 +1,19 @@
+@import 'varible';
+#menu {
+    margin: 0 auto;
+    margin-top: 10px;
+    ul {
+    	font-size: 0.9rem;
+        li {
+    		display: inline-block;
+            list-style-type: none;
+            font-size: inherit;
+            margin-left: 1em;
+            line-height: 1.5;
+            &:hover{
+            	cursor: pointer;
+				color: $gThemeColor;
+            }
+        }
+    }
+}
