@@ -32,5 +32,5 @@ module.exports = {
         new webpack.NoErrorsPlugin(), //允许错误不打断程序
         new webpack.HotModuleReplacementPlugin() //webpack热替换插件
     ],
-    // devtool: 'source-map'
+    devtool: 'source-map'
 };
