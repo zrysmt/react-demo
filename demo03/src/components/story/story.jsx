@@ -5,7 +5,7 @@ import "./story.scss";
 
 class Story extends React.Component{
 	render(){
-		return (
+		return(
 			<h5>这是story</h5>
 		);
 	}
