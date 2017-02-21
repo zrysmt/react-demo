@@ -4,7 +4,7 @@
 + demo02 [阮一峰React入门案例](http://www.ruanyifeng.com/blog/2015/03/react.html)改造成使用ES6语法形式
 + demo03 React-router的一个完整例子,我的[另外一篇博客](http://blog.csdn.net/future_todo/article/details/53036638)的demo
    >http://blog.csdn.net/future_todo/article/details/53036638
-+ demo04 作为推荐使用的方式，是HRM热替换的命令行方式 + react router的一个项目结构
+
  
 ## 一步一步讲解react+webpack的配置(demo01)
 看了很多博客，大都是把配置文件一笔带过，或者干脆不给出配置文件，然而环境搭建对于新手来说是既困难又重要，显然网络上的博客不利于新手开始学习。
@@ -310,7 +310,9 @@ node server.js  //启动node服务
 
 ## 6.2 命令行方式
 命令行方式比较简单，只需要加入`--inline --hot`。
-例子位置在我的[github](https://github.com/zrysmt/react-demo)对应例子是demo04。
+例子位置在我的[github](https://github.com/zrysmt/react-website/tree/master/mysite02)。
+> https://github.com/zrysmt/react-website/tree/master/mysite02
+
 这个例子中执行的命令是：
 ```bash
 webpack-dev-server --history-api-fallback --progress --profile --inline --colors --hot --port 4000
@@ -318,7 +320,7 @@ webpack-dev-server --history-api-fallback --progress --profile --inline --colors
 
 
 
-> 可以在我的[github](https://github.com/zrysmt/react-demo)  https://github.com/zrysmt/react-demo中clone或者fork，本博文对应demo01和demo04
+> 可以在我的[github](https://github.com/zrysmt/react-demo)  https://github.com/zrysmt/react-demo中clone或者fork，本博文对应demo01
 
 
 参考阅读：
