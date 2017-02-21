@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>处理y开头的数据库</title>
+</head>
+
+<body>
+    <input type="button" value="开始处理y开头的数据库" onclick="queryDB()" />
+    <script src='/cjeb/common/js/util.js'></script>
+    <script src='/cjeb/common/jslib/gConfig.js'></script>
+    <script src='/cjeb/common/jslib/gClass.js'></script>
+    <script src='/cjeb/common/jslib/gUtil.js'></script>
+    <script src='/cjeb/common/jslib/gWebSQL.js'></script>
+    <script src="/cjeb/common/jslib/gWebSQLScript.js"></script>
+    <script type="text/javascript">
+    var tableName = ['y_basicClimate_all'];
+    function queryDB() {
+        var sqlservice = new gEcnu.WebSQLServices.SQLServices({
+            'processCompleted': function(data) {
+                // console.log(data); //回调函数里返回数据
+                if (data.length && data.length !== 0) {
+                    queryDB_callback(data);
+                }
+            },
+            'processFailed': function() {
+                alert('query error');
+            }
+        });
+        var sql = {
+            'lyr': tableName[0],
+            'fields': '*',
+            // 'filter': 'id=2'
+        };
+        sqlservice.processAscyn("SQLQUERY", "CJEB", sql);
+    }
+
+
+    function queryDB_callback(data) {
+        console.log(data);
+        var len = data.length;
+        var N = 31; //2015 - 1985
+        var year = '1985';
+        var allRecord = [];
+        for (var i = 0; i < len; i++) {
+
+            var Row1to31 = [];
+            for (var k in data[i]) {
+                var y = parseInt(k.slice(0, -1));
+                if (typeof y == 'number' && !!y) { //是年份的时候执行循环
+                    var obj = {};
+                    obj.V1 = '';
+                    obj.V2 = data[i].CITYNAME;
+                    obj.V3 = '城市';
+                    obj.V4 = y;
+                    obj.V5 = data[i][k];
+                    obj.ind = data[i].INDICATOR;
+                    Row1to31.push(obj);
+                }
+
+            }
+            allRecord.push(Row1to31);
+            // console.log(Row1to31);
+        }
+        console.log(allRecord);
+
+        var convData = [];
+        for (var m = 0; m < allRecord.length - 1; m++) {
+            var OBJ31Array = allRecord[m]; //一个城市
+            // console.log(allRecord[m][0].V2);
+            if (allRecord[m + 1][0].V2 == allRecord[m][0].V2) {
+                allRecord[m].concat(allRecord[m + 1]);
+                convData.push(allRecord[m]);
+            }
+        }
+
+        console.log(convData);
+
+
+    }
+    </script>
+</body>
+
+</html>

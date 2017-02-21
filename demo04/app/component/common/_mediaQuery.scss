@@ -1,0 +1,52 @@
+/* 废弃 */
+$viewport-increment: 0.1px; // customize to suite
+// Desktop
+$desktop: 1024px; // destop
+$pre-desktop: $desktop - $viewport-increment;
+// Tablet
+$tablet: 768px; // ipad
+$pre-tablet: $tablet - $viewport-increment;
+// Palm
+$palm: 640px; // iphone
+$post-palm: $palm + $viewport-increment;
+$android: 480px;
+$pre-android:$android - $viewport-increment;
+// Constraints
+$min: min-width;
+$max: max-width;
+
+@mixin mediaQuery($constraint, $viewport1, $viewport2: null) {
+    @if $constraint==$min {
+        @media screen and ($min: $viewport1) {
+            @content;
+        }
+    }
+    @else if $constraint==$max {
+        @media screen and ($max: $viewport1) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and ($min: $viewport1) and ($max: $viewport2) {
+            @content;
+        }
+    }
+}
+
+html {
+    @include mediaQuery($max, $pre-android) { //x < 480-0.1
+        font-size: 50% !important;//1rem = 8px;
+    }
+    @include mediaQuery($min, $android) { //480px < x 
+        font-size: 62.5% !important;//1rem = 10px;
+    }
+    @include mediaQuery($min, $palm) { // 640px < x 
+        font-size: 125% !important;//1rem = 20px
+    }
+    @include mediaQuery($min, $tablet) { // 768px < x 
+        font-size: 150% !important;//1rem = 24px
+    }
+    @include mediaQuery($min, $desktop) {// 1024px < x
+        font-size: 187.5% !important;//1rem = 30px
+    }
+}

@@ -1,0 +1,100 @@
+#indBox {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    bottom: 2px;
+    margin-right: 32px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+}
+
+#indTtl {
+    position: absolute;
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    left: 25px;
+    top: 18px;
+}
+
+#listbox {
+    position: absolute;
+    top: 55px;
+    bottom: 18px;
+    left: 26px;
+    right: 0;
+    overflow: hidden;
+}
+
+.optItem {
+    position: relative;
+    left: 0;
+    line-height: 20px;
+    height: 20px;
+    margin: 0 26px 15px 0;
+}
+
+.optItem2 {
+    position: relative;
+    left: 15px;
+    line-height: 15px;
+    height: 15px;
+    margin: 0 40px 15px 0;
+}
+
+.optImg {
+    position: absolute;
+    width: 4px;
+    height: 6px;
+    top: 8px;
+}
+
+.optTxt {
+    position: absolute;
+    left: 15px;
+    right: 0;
+    font-size: 15px;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.optTxt:hover {
+    opacity: .7;
+    color:#337ab7;
+}
+
+.optTxt_disint {
+    position: absolute;
+    left: 15px;
+    right: 0;
+    font-size: 15px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media (max-width: 1160px) {
+    .optItem {
+        margin: 0 8px 15px 0;
+    }
+    .optItem2 {
+        margin: 0 18px 15px 0;
+        left: 10px;
+    }
+    .optTxt,
+    .optTxt_disint {
+        left: 10px;
+    }
+    #indTtl {
+        left: 8px;
+    }
+    #listbox {
+        left: 9px;
+    }
+}

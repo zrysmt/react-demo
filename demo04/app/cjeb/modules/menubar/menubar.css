@@ -1,0 +1,69 @@
+#menu{
+    height: 38px;
+}
+.menu {
+    display: inline-block;
+    height: 100%;
+    width: 12%;
+    max-width: 110px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.menu span {
+    color: #fff;
+}
+
+.menuhov,
+.menusel {
+    background-color: #4A5591;
+}
+
+#home {
+    margin-left: 10px;
+}
+
+.menuList {
+    display: none;
+    position: absolute;
+    width: 22%;
+    max-width: 204px;
+}
+
+.menuItem {
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    border: solid #dedede;
+    border-width: 0 1px 1px 1px;
+    color: #666;
+    font-size: 14px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.menuItem:hover {
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.itmBtmLine {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #337ab7;
+}
+
+.sub_menu_ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+}

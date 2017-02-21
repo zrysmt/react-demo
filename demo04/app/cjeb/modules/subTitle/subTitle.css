@@ -1,0 +1,208 @@
+#subTxt {
+    position: absolute;
+    left: 40px;
+    top: 26px;
+    min-width: 160px;
+    height: 20px;
+    line-height: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+#year_cnty_box {
+    position: absolute;
+    top: 16px;
+    color: #666;
+    font-size: 13px;
+    right: 480px;
+    height: 36px;
+    line-height: 36px;
+    width: 150px;
+    text-indent: 12px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e4e4e4;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #999;
+    cursor: pointer;
+}
+
+.year_cnty_list {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #999;
+    height: 209px;
+    background-color: #f8f8f8;
+}
+
+#cntylist {
+    height: 385px;
+}
+
+.sub_year_cnty_list {
+    position: relative;
+    margin: 0 13px 0 12px;
+    height: 34px;
+    text-indent: 0;
+    border-bottom: 1px solid #dedede;
+}
+
+.sub_year_cnty_list:last-child {
+    border-bottom: 0;
+}
+
+.TriDwn {
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-left: 5.9px solid transparent;
+    border-right: 5.9px solid transparent;
+    border-top: 6px solid #337ab7;
+}
+
+.TriRgt {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 0;
+    height: 0;
+    border-top: 5.9px solid transparent;
+    border-left: 6px solid #337ab7;
+    border-bottom: 5.9px solid transparent;
+}
+
+#subTab {
+    position: absolute;
+    font-size: 16px;
+    color: #999;
+    right: 36px;
+    top: 25px;
+    line-height: 20px;
+}
+
+.slash {
+    font-size: 14px;
+}
+
+.subTab {
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.subTab:hover {
+    opacity: .7;
+    color: #337ab7;
+}
+
+.subTab:last-child {
+    padding: 0 0 0 20px;
+}
+
+.listDiv {
+    display: none;
+    position: absolute;
+    color: #666;
+    top: 0;
+    left: 149px;
+    width: 148px;
+}
+
+.sub_year_cnty_ul {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 1px;
+    width: 144px;
+    line-height: 34px;
+    background-color: #f8f8f8;
+    text-indent: 0;
+    text-align: center;
+    border: solid #e4e4e4;
+    border-width: 1px 1px 1px 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #999;
+    z-index: 99;
+}
+#cntylist .sub_year_cnty_ul li{
+    margin: 0 5px 0 5px;
+    width: 155px;
+}
+.sub_year_cnty_ul li {
+    border-bottom: 1px solid #dedede;
+    margin: 0 13px 0 12px;
+}
+
+.year_cnty_Item:last-child {
+    border-bottom: 0;
+}
+
+.year_cnty_Item:hover {
+    color: #337ab7;
+}
+
+.boxclk {
+    background-color: #337ab7;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.triclk {
+    border-top-color: #fff;
+    opacity: .8;
+}
+
+.menuHov {
+    margin: 0 !important;
+    color: #fff;
+    text-indent: 12px;
+    border: 0;
+    background-color: #337ab7;
+    border-radius: 2px;
+}
+
+.triHov {
+    right: 13px;
+    border-left-color: #fff;
+    opacity: .8;
+}
+
+/*.select-ind {
+    color: #337ab7 !important;
+    text-decoration: underline ;
+}*/
+@media (max-width: 1160px) {
+    #subTxt {
+        font-size: 17px;
+    }
+    #subTab {
+        font-size: 15px;
+    }
+    .slash {
+        font-size: 12px;
+    }
+    .subTab {
+        padding: 0 10px;
+    }
+    .subTab:last-child {
+        padding: 0 0 0 10px;
+    }
+    #year_cnty_box {
+        top: 17px;
+        font-size: 11px;
+        right: 385px;
+        height: 33px;
+        line-height: 33px;
+        width: 130px;
+    }
+    .TriDwn {
+        top: 14px;
+    }
+    .listDiv {
+        left: 129px;
+    }
+}

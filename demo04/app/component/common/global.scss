@@ -1,0 +1,12 @@
+@import 'reset';
+@import 'varible';
+// @import 'mediaQuery';
+html {
+    font-family: $gFontFamily;
+    background-color:$gBColor;
+}
+body{
+    font-size: $gFontSize;
+    min-width: 800px;
+}
+
