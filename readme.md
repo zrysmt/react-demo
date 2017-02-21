@@ -5,8 +5,8 @@
 + demo03 React-router的一个完整例子,我的[另外一篇博客](http://blog.csdn.net/future_todo/article/details/53036638)的demo
    >http://blog.csdn.net/future_todo/article/details/53036638
 + demo04 作为推荐使用的方式，是HRM热替换的命令行方式 + react router的一个项目结构
-
-## 一步一步讲解react+webpack的配置
+ 
+## 一步一步讲解react+webpack的配置(demo01)
 看了很多博客，大都是把配置文件一笔带过，或者干脆不给出配置文件，然而环境搭建对于新手来说是既困难又重要，显然网络上的博客不利于新手开始学习。
 BZ打算从从头开始，一步一步配置webpack，能够使用ES6+React组合开发，废话少说让我们一起来开始Webpack+ES6+React之旅。
 
