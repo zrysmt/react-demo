@@ -185,8 +185,7 @@ npm i --save-dev path
 在配置文件中
 ```
 var path = require('path');
-使用
-```
+
 output: {
     path: path.resolve(__dirname, 'output'),
   },
