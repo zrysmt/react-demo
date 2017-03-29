@@ -17,6 +17,7 @@ BZ打算从从头开始，一步一步配置webpack，能够使用ES6+React组�
 
 当然你也可以使用本博文最后总结的部分或者从我的[github](https://github.com/zrysmt/react-demo)中获得，全部安装插件`npm install`,然后执行`webpack`就可以编译了。
 - 使用命令`npm init`新建包管理文件
+- 安装webpack ，`npm i --save-dev webpack`
 - 在项目根目录下新增`webpack.config.js`文件，它的基本结构是：
 
 
@@ -148,7 +149,48 @@ npm i --save-dev  style-loader  css-loader sass-loader  node-sass
 import "./home/home.css";
 import "./home/home.scss";
 ```
+## css文件可以独立出来
+```
+npm i --save-dev extract-text-webpack-plugin
+```
+配置
+```
+/*下面两行的作用是分离css*/
+{ test: /\.css$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader") },
+{ test: /\.scss$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }, //sass
+```
+## 图片加载
+```bash
+npm i --save-dev  url-loader
+```
+配置webpack.config.js
+```
+{test: /\.(png|jpg)$/,
+    exclude: /node_modules/,
+    loader: 'url?limit=8192'}
+```
+意思是大于8192kb的图片会以base64的形式加载
 
+使用：
+```
+<img src={require("./imgs/rect.png")}/>
+//或者在css中直接使用
+background: url(imgs/toolbar.png) no-repeat;
+```
+## path路径管理
+有时候在配置文件中经常会用到路径管理
+```
+npm i --save-dev path
+```
+在配置文件中
+```
+var path = require('path');
+使用
+```
+output: {
+    path: path.resolve(__dirname, 'output'),
+  },
+```
 
 # 5. 基本功能配置总结：
 package.json
@@ -204,6 +246,10 @@ page: "./src/app.js"
             // {test:/\.jsx?$/,exclude: /node_modules/,loader:'jsx-loader?harmony'},//支持react
             // {test:/\.jsx?$/,exclude: /node_modules/,loader:'babel?presets[]=react,presets[]=es2015'},//同时支持es6 react或者
             {test:/\.jsx?$/,exclude: /node_modules/,loader: 'babel', query: {presets: ['es2015', 'react']}},//同时支持es6 react
+            {test: /\.(png|jpg)$/, exclude: /node_modules/, loader: 'url?limit=8192'},
+            /*下面两行的作用是分离css*/
+            /*{ test: /\.css$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader") },
+             { test: /\.scss$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }, //sass加载器*/
             { test: /\.css$/, loader: "style!css" },
             { test: /\.scss$/, loader: "style!css!sass" }, //sass加载器
         ]
@@ -212,6 +258,7 @@ page: "./src/app.js"
         extensions: ['', '.js', '.json']
     },
     plugins: [
+      // new ExtractTextPlugin("output/[name].css"),//独立css文件
         new webpack.NoErrorsPlugin()
     ],
     devtool: 'source-map'
@@ -267,6 +314,10 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel', query: { presets: ['es2015', 'react'] } }, //同时支持es6 react
+            {test: /\.(png|jpg)$/, exclude: /node_modules/, loader: 'url?limit=8192'},
+            /*下面两行的作用是分离css*/
+            /*{ test: /\.css$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader") },
+             { test: /\.scss$/, loader:ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }, //sass加载器*/
             { test: /\.css$/, loader: "style!css" },
             { test: /\.scss$/, loader: "style!css!sass" }, //sass加载器
         ]
@@ -275,6 +326,7 @@ module.exports = {
         extensions: ['', '.js', '.json']
     },
     plugins: [
+      // new ExtractTextPlugin("output/[name].css"),//独立css文件
         new webpack.NoErrorsPlugin(), //允许错误不打断程序
         new webpack.HotModuleReplacementPlugin() //增加：webpack热替换插件
     ],
