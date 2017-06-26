@@ -11,7 +11,7 @@
 BZ打算从从头开始，一步一步配置webpack，能够使用ES6+React组合开发，废话少说让我们一起来开始Webpack+ES6+React之旅。
 
 
-> 可以在我的[github](https://github.com/zrysmt/react-demo) 中clone或者fork，本博文对应demo01
+> 可以在我的[github](https://github.com/zrysmt/react-demo) 中clone或者fork
   https://github.com/zrysmt/react-demo
 
 
@@ -272,7 +272,7 @@ page: "./src/app.js"
 }
 ```
 # 6. React支持热插拔
-webpack-dev-server支持热插拔（热替换 HRM），使用HRM功能也有两种方式：命令行方式和Node.js API 方式。
+webpack-dev-server支持热插拔（热替换 HRM），使用HRM功能也有两种方式：命令行方式(推荐)和Node.js API 方式。
 ## 6.1 Node.js API方式
 Node.js API方式需要做三个配置：
 1) 把`webpack/hot/dev-server`加入到webpack配置文件的entry项；
@@ -354,24 +354,100 @@ new WebpackDevServer(webpack(config), {
 ```
 如何使用？--在命令行中
 ```bash
-webpack   //最好先编译一次
+webpack &
 node server.js  //启动node服务
 ```
-在浏览器输入`localhost:3000`即可查看结果，我们修改css文件，保存之后网页会自动刷新显示在浏览器上。
+在浏览器输入`localhost:3000`即可查看结果，我们修改css文件，保存之后网页会自动刷新显示在浏览器上。js文件修改需要手动刷新一次。
 
 ## 6.2 命令行方式
-命令行方式比较简单，只需要加入`--inline --hot`。
-例子位置在我的[github](https://github.com/zrysmt/react-website/tree/master/mysite02)。
-> https://github.com/zrysmt/react-website/tree/master/mysite02
+命令行方式比较简单，需要加入`--inline --hot`。
+例子位置在我的[github](https://github.com/zrysmt/react-demo/tree/master/demo03)。
+> https://github.com/zrysmt/react-demo/tree/master/demo03
 
 这个例子中执行的命令是：
 ```bash
-webpack-dev-server --history-api-fallback --progress --profile --inline --colors --hot --port 4000
+SET DEBUG=true && webpack-dev-server --history-api-fallback --progress --profile --inline --colors --hot --port 8080 --open
+```
+指定端口8080，可以是其它的没有被占用过的任意端口。
+
+具体配置项也有所改变
+```js
+var webpack = require('webpack');
+var path = require('path');
+var HtmlwebpackPlugin = require('html-webpack-plugin');
+
+// 定义当前是否处于开发debug阶段
+var isDebug = JSON.stringify(JSON.parse(process.env.DEBUG || 'false'));
+
+// 根据isDebug变量定义相关config变量
+var configVarObj = {};
+if(isDebug === 'true') {
+    console.log('I am in debuging............');
+    configVarObj = {
+        htmlPath: 'index.html',  // 定义输出html文件路径
+        // devtool: 'cheap-source-map' // 生成sourcemap,便于开发调试
+        devtool: 'eval' // 生成sourcemap,便于开发调试
+    };
+} else {
+    console.log('I am in releasing............');
+    configVarObj = {
+        htmlPath: /*cjebTemplateFolder + */'/index.html',  // 定义输出html文件路径
+        devtool: ''
+    };
+}
+
+module.exports = {
+    context: path.join(__dirname, 'src'),
+    entry:  {
+        app:"./app.js",
+        vendors: [
+          'jquery'
+        ]
+    },
+    output: {
+        path: path.resolve(__dirname, 'output'),
+        // 输出文件名
+        filename: 'js'+'/[name].min.js?[hash]',
+        // cmd、amd异步加载脚本配置名称
+        chunkFilename: 'js'+'/[name].chunk.js?[hash]',
+        publicPath: ''
+    },
+    module: {
+        loaders: [
+            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel', query: { presets: ['es2015', 'react'] } }, //同时支持es6 react
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.scss$/, loader: "style!css!sass" }, //sass加载器
+        ]
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx','.json']
+    },
+    devtool: configVarObj.devtool,
+    plugins: [
+        new HtmlwebpackPlugin({
+            title: 'test',
+            template: path.join(__dirname, './index.html'),
+            filename: 'index.html',
+            minify: {
+                minifyJS: true,
+                removeComments: true,
+                minifyCSS: true
+            },
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        //定义全局变量
+        new webpack.DefinePlugin({
+            __DEV__: isDebug 
+        })
+    ]
+};
 ```
 
-
-
-> 可以在我的[github](https://github.com/zrysmt/react-demo)  https://github.com/zrysmt/react-demo中clone或者fork，本博文对应demo01
+> 可以在我的[github](https://github.com/zrysmt/react-demo)  https://github.com/zrysmt/react-demo中clone或者fork
 
 
 参考阅读：
